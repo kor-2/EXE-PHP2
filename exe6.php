@@ -14,22 +14,17 @@ $elements = array("Monsieur","Madame","Mademoiselle");alimenterListeDeroulante($
 
 <?php
 
-$genre = ["Monsieur","Madame","Mademoiselle"];
-
+$genre = ['Monsieur', 'Madame', 'Mademoiselle'];
 
 function alimenterListeDeroulante(array $input)
 {
-    echo "<select>";
+    $return = '<select name="genre">';
     foreach ($input as $val) {
-        echo "<option value='$val'>$val</option>";
+        $return .= "<option value='$val'>$val</option>";
     }
-    echo "</select>";
-    return;
+    $return .= '</select>';
+
+    return $return;
 }
 
-alimenterListeDeroulante($genre);
-
-
-
-
-
+echo alimenterListeDeroulante($genre);

@@ -13,45 +13,48 @@
 
 <?php
 
-$genre = [true,"texte",10,25.369,["valeur1","valeur2"]];
+$genre = [true, 'texte', 10, 25.369, ['valeur1', 'valeur2']];
 
-function dump($data){
-
+function dump($data)
+{
     $len = count($data);
-    
-    for ($i=0; $i < $len; $i++) { 
+    $return = '';
 
-        switch ($data[$i]) {
-            case gettype($data[$i]) == 'boolean':
-                if ($data[$i] == 1) {
-                    echo "bool (true)<br>";
-                }else{
-                    echo "bool (false)<br>";
-                }
-                break;
-            case gettype($data[$i]) == 'string':
-                
-                    echo "string(".strlen($data[$i]).")    ". $data[$i]."<br>";
-                
-                break;
-            case gettype($data[$i]) == 'integer':
-                
-                    echo "int($data[$i])<br>";
-                
-                break;
-            case gettype($data[$i]) == 'double':
-                
-                    echo "float($data[$i]) <br>";
-                
-                break;
-            case gettype($data[$i]) == 'array':
-
-                    var_dump($data[$i]);
-                break;
-            
-        }
-        
+    foreach ($data as $d) {
+        $return .= var_dump($d);
     }
-    return;
+
+    // for ($i = 0; $i < $len; ++$i) {
+    //     switch ($data[$i]) {
+    //         case gettype($data[$i]) == 'boolean':
+    //             if ($data[$i] == 1) {
+    //                 $return .= 'bool (true)<br>';
+    //             } else {
+    //                 $return .= 'bool (false)<br>';
+    //             }
+    //             break;
+    //         case gettype($data[$i]) == 'string':
+
+    //             $return .= 'string('.strlen($data[$i]).')    '.$data[$i].'<br>';
+
+    //             break;
+    //         case gettype($data[$i]) == 'integer':
+
+    //             $return .= "int($data[$i])<br>";
+
+    //             break;
+    //         case gettype($data[$i]) == 'double':
+
+    //             $return .= "float($data[$i]) <br>";
+
+    //             break;
+    //         case gettype($data[$i]) == 'array':
+
+    //             var_dump($data[$i]);
+    //             break;
+    //     }
+    // }
+
+    return $return;
 }
-dump($genre);
+echo dump($genre);

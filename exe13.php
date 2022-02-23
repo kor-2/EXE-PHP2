@@ -95,24 +95,22 @@ class Voiture
     public function demarrer()
     {
         $this->set_run(true);
-        echo "Le véhicule " . $this->get_marque() . " " . $this->get_modele() . " démarre <br>";
-        return;
+        return "Le véhicule " . $this->get_marque() . " " . $this->get_modele() . " démarre <br>";
     }
 
     public function accelerer($vitesse)
     {
-        if ($this->get_run() == true) 
+        if ($this->get_run()) 
         {
             $fast = $this->get_vitesseActu() + $vitesse;
             $this->set_vitesseActu($fast);
-            echo "Le véhicule " . $this->get_marque() . " " . $this->get_modele() . " accélère de " . $this->get_vitesseActu() . " km / h <br>";
-            return;
+            return "Le véhicule " . $this->get_marque() . " " . $this->get_modele() . " accélère de " . $this->get_vitesseActu() . " km / h <br>";
         }
         else 
         {
-            echo "le véhicule ". $this->get_marque() . " " . $this->get_modele() . " veut accélerer de ". $vitesse ."<br>
+            
+            return "Le véhicule ". $this->get_marque() . " " . $this->get_modele() . " veut accélerer de ". $vitesse ."<br>
             Pour accélerer, il faut démarrer le vehicule ". $this->get_marque() . " " . $this->get_modele() ." !";
-            return;
         }
         
         
@@ -122,17 +120,21 @@ class Voiture
     {
         $fast = $this->get_vitesseActu() - $vitesse;
 
-        $this->set_vitesseActu($fast);
+        if ($fast < 0 ) {
+            return "Le véhicule ". $this->get_marque() . " " . $this->get_modele() . " veut ralentir de ". $vitesse ."<br>
+            On ne peut pas ralentir vers une vitesse negative !<br>";
+            
+        }else{
 
-        echo "Le véhicule " . $this->get_marque() . " " . $this->get_modele() . " freine à  " . $this->get_vitesseActu() . " km / h <br>";
-        return;
+            $this->set_vitesseActu($fast);
+            return "Le véhicule " . $this->get_marque() . " " . $this->get_modele() . " freine à  " . $this->get_vitesseActu() . " km / h <br>";
+        }
     }
     public function stopper()
     {
         $this->set_run(false);
         $this->set_vitesseActu(0);
-        echo "Le véhicule " . $this->get_marque() . " " . $this->get_modele() . " est stoppé <br>";
-        return;
+        return "Le véhicule " . $this->get_marque() . " " . $this->get_modele() . " est stoppé <br>";
     }
 
     public function __toString()
@@ -147,22 +149,19 @@ class Voiture
         Le véhicule " . $this->get_marque() . " est " . $dem . "<br>
         Sa vitesse actuelle est de : " . $this->get_vitesseActu() . "  km/h <br>";
     }
-
-    
-
-    
 }
 
 $v1 = new Voiture("Peugeot", "408", 5);
 $v2 = new Voiture("Citroën", "C4", 3);
 
 
-$v1->demarrer();
-$v1->accelerer(50);
+echo $v1->demarrer();
+echo $v1->accelerer(50);
+echo $v1->ralentir(60);
 
-$v2->demarrer();
-$v2->stopper();
-$v2->accelerer(20);
+echo $v2->demarrer();
+echo $v2->stopper();
+echo $v2->accelerer(20);
 
 
 echo "<br>$v1";

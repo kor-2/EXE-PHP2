@@ -12,11 +12,12 @@
 
 <?php
 
-function formaterDateFr(string $date){
+function formaterDateFr(string $date)
+{
     $d = new DateTime($date);
-    $day = datefmt_create( "fr_FR" ,IntlDateFormatter::FULL, IntlDateFormatter::NONE );
-    echo datefmt_format($day,$d);
-    return;
+    $day = datefmt_create('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::NONE);
+
+    return datefmt_format($day, $d);
 }
 
-formaterDateFr('1998-02-20');
+echo formaterDateFr('1998-02-20');

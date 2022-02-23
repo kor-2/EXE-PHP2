@@ -48,8 +48,8 @@ class Voiture {
     }
     
     public function getInfos(){
-        echo $this->get_marque()." ". $this->get_modele()."<br>";
-        return ;
+        
+        return $this->get_marque()." ". $this->get_modele();
     }
 }
 
@@ -74,8 +74,9 @@ class VoitureElec extends Voiture{
         return $this;
     }
     public function getInfos(){
-        echo $this->get_marque()." ". $this->get_modele()." a une autonomie de ". $this->get_autonomie()." km<br>";
-        return ;
+        $parent = parent::getInfos();
+
+        return $parent." a une autonomie de ". $this->get_autonomie()." km<br>";
     }
 }
 
@@ -85,5 +86,5 @@ class VoitureElec extends Voiture{
 $v1 = new Voiture("Peugeot","408");
 $ve1 = new VoitureElec("BMW","I3",100);
 
-$v1->getInfos();
-$ve1->getInfos();
+echo $v1->getInfos() ."<br>";
+echo $ve1->getInfos()."<br>";

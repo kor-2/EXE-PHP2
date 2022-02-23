@@ -14,26 +14,25 @@
     td{
         border: 1px solid black ;
         border-collapse: collapse;
+        text-align: center;
+        padding: 5px;
     }
 </style>
-<?php 
+<?php
 
-$capitales =["France"=>"Paris","Allemagne"=>"Berlin","USA"=>"Washington","Italie"=>"Rome"];
+$capitales = ['France' => 'Paris', 'Allemagne' => 'Berlin', 'USA' => 'Washington', 'Italie' => 'Rome'];
 
-
-function afficherTableHTML(array $tableau){
-
-    echo "<table><thead><tr>";
-    echo "<th>Pays</th><th>Capitale</th></tr></thead><tbody>";
+function afficherTableHTML(array $tableau)
+{
+    ksort($tableau);
+    $return = '<table><thead><tr><th>Pays</th><th>Capitale</th></tr></thead><tbody>';
 
     foreach ($tableau as $pays => $capital) {
-        echo "<tr><td> $pays </td>";
-        echo "<td> $capital </td></tr>";
+        $return .= "<tr><td> $pays </td><td> $capital </td></tr>";
     }
-    echo "</tbody></table>";
-    return;
+    $return .= '</tbody></table>';
+
+    return $return;
 }
 
-
-
-afficherTableHTML($capitales);
+echo afficherTableHTML($capitales);

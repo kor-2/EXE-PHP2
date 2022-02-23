@@ -22,60 +22,52 @@
 <?php
 
 $inputs = [
-    "Nom" => "text",
-    "Prenom" => "text",
-    "E-mail" => "email",
-    "Ville" => "text",
-    "Sexe" => "radio"];
+    'Nom' => 'text',
+    'Prenom' => 'text',
+    'E-mail' => 'email',
+    'Ville' => 'text',
+    'Sexe' => 'radio', ];
 
 function afficherInput(array $input)
 {
+    $return = '';
     foreach ($input as $val => $type) {
-        
-        if ($type == "radio") {
-
-            
-            echo 
+        if ($type == 'radio') {
+            $return .=
             "<p>$val</p>
                 
                     <input type='radio' id='M' name='$val' value='M'><label for='M'>M</label>
                     <input type='radio' id='F' name='$val' value='F'><label for='F'>F</label>";
-        }else {
-            echo "<label for='$val'><p>$val</p><input type='$type' name='$val'></label>";
+        } else {
+            $return .= "<label for='$val'><p>$val</p><input type='$type' name='$val'></label>";
         }
-
-        
-
     }
-    return;
+
+    return $return;
 }
 
-
-$jobs = ["Développeur Logiciel","Designer web","Intégrateur","Chef de projet"];
+$jobs = ['Développeur Logiciel', 'Designer web', 'Intégrateur', 'Chef de projet'];
 
 function alimenterListeDeroulante(array $input)
 {
-    echo "<select>";
+    $return = '<select>';
     foreach ($input as $val) {
-        echo "<option value='$val'>$val</option>";
+        $return .= "<option value='$val'>$val</option>";
     }
-    echo "</select>";
-    return;
+    $return .= '</select>';
+
+    return $return;
 }
 
+function showForm(array $info, array $job)
+{
+    $return = "<form method='get'>";
+    $return .= afficherInput($info);
+    $return .= '<br>';
+    $return .= alimenterListeDeroulante($job);
+    $return .= "<input type='submit'></form>";
 
-function showForm(array $info, array $job){
-
-    echo "<form method='get'>";
-    afficherInput($info);
-    echo "<br>";
-    alimenterListeDeroulante($job);
-    echo "<input type='submit'>";
-    echo "</form>";
-
-    return;
+    return $return;
 }
 
-showForm($inputs, $jobs);
-
-
+echo showForm($inputs, $jobs);

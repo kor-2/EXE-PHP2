@@ -5,14 +5,17 @@
     fonction comme suit: convertirMajRouge($texte);
 </p>
 
-<?php 
+<style>
+    .red{
+        color: red;
+    }
+</style>
 
+<?php
 
-function convertirMajRouge(string $text){
-
-     echo "<p style=\"color:red\">". strtoupper($text) ."</p>";
-
-    return ;
+function convertirMajRouge(string $text)
+{
+    return '<p class="red">'.mb_strtoupper($text).'</p>';
 }
 
-convertirMajRouge("salut");
+echo convertirMajRouge('Bonjour : )');

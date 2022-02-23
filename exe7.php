@@ -13,26 +13,16 @@
 
 <?php
 
-$choix = ["Choix 1","Choix 2","Choix 3"];
-
+$choix = ['Choix 1' => '', 'Choix 2' => 'checked', 'Choix 3' => ''];
 
 function genererCheckbox(array $input)
 {
-    
-    foreach ($input as $val) {
-        echo "<input type='checkbox' id='$val' name='$val' value='$val'";
-
-        if ($val == "Choix 2") {
-            echo "checked";
-        }
-        echo "><label for='$val'> $val</label><br>";
+    $return = '';
+    foreach ($input as $val => $check) {
+        $return .= "<input type='checkbox' $check id='$val' name='$val' value='$val'><label for='$val'> $val</label><br>";
     }
-    return;
+
+    return $return;
 }
 
-genererCheckbox($choix);
-
-
-
-
-
+echo genererCheckbox($choix);

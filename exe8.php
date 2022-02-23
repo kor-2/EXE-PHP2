@@ -14,21 +14,16 @@
 
 <?php
 
-$url = "http://my.mobirise.com/data/userpic/764.jpg";
-
+$url = 'http://my.mobirise.com/data/userpic/764.jpg';
 
 function repeterImage(string $url, int $nb)
 {
-    for ($i=0; $i < $nb; $i++) { 
-        echo "<img src='$url' alt='sympa'>";
+    $return = '';
+    for ($i = 0; $i < $nb; ++$i) {
+        $return .= "<img src='$url' alt='sympa'>";
     }
-    
-    
+
+    return $return;
 }
 
-repeterImage($url, 5);
-
-
-
-
-
+echo repeterImage($url, 5);

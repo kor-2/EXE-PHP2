@@ -12,23 +12,16 @@
 
 <?php
 
-$tableau = ["Masculin","Féminin","Autre"];
-
+$tableau = ['Masculin' => '', 'Féminin' => '', 'Autre' => 'checked'];
 
 function afficherRadio(array $input)
 {
-    foreach ($input as $val) {
-        echo "<input type='radio' id='$val' name='$val' value='$val'";
-
-        //$val == "Madame" ? "checked" :"";
-        if ($val == "Autre") {
-            echo "checked";
-        }
-        echo "><label for='$val'> $val</label><br>";
+    $return = '';
+    foreach ($input as $val => $check) {
+        $return .= "<input type='radio' $check id='$val' name='genre' value='$val'>
+        <label for='$val'> $val</label><br>";
     }
-    return;
-    
+
+    return $return;
 }
-afficherRadio($tableau);
-
-
+echo afficherRadio($tableau);

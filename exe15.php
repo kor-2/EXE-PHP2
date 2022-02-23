@@ -13,16 +13,16 @@ L’adresse elan@elan-formation.frest une adresse e-mail valide<br><br>
 
 <?php
 
-function valide($email){
+function valide($email)
+{
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "L'adresse email '$email' est considérée comme valide. <br>";
+        return "L'adresse email '$email' est considérée comme valide. <br>";
     } else {
-        echo "L'adresse email '$email' est considérée comme invalide.<br>";
+        return "L'adresse email '$email' est considérée comme invalide.<br>";
     }
-    return;
 }
 
-$email1 ="salut@gmail.com";
-$email2 ="salut";
-valide($email1);
-valide($email2);
+$email1 = 'salut@gmail.com';
+$email2 = 'salut';
+echo valide($email1);
+echo valide($email2);

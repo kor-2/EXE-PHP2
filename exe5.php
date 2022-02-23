@@ -14,24 +14,16 @@
 
 <?php
 
-$input = ["Nom","Prénom","Ville"];
-
+$input = ['Nom', 'Prénom', 'Ville'];
 
 function afficherInput(array $input)
 {
-    
+    $return = '';
     foreach ($input as $val) {
-        echo "<label for='$val'><p>$val</p><input type='text' name='$val'></label>";
+        $return .= "<label for='$val'><p>$val</p><input type='text' name='$val'></label>";
     }
 
-
-    return;
-
+    return $return;
 }
 
-afficherInput($input);
-
-
-
-
-
+echo afficherInput($input);

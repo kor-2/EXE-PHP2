@@ -22,26 +22,21 @@
 
 <?php
 
+$capitales = ['France' => 'Paris', 'Allemagne' => 'Berlin', 'USA' => 'Washington', 'Italie' => 'Rome', 'Espagne' => 'Madrid'];
 
-$capitales = ["France"=>"Paris","Allemagne"=>"Berlin","USA"=>"Washington","Italie"=>"Rome","Espagne"=>"Madrid"];
-
-
-function afficherTableHTML(array $tableau){
-
-    echo "<table><thead><tr>";
-    echo "<th>Pays</th><th>Capitale</th><th>Lien wiki</th></tr></thead><tbody>";
-
+function afficherTableHTML(array $tableau)
+{
     asort($tableau);
+    $return = '<table><thead><tr><th>Pays</th><th>Capitale</th><th>Lien wiki</th></tr></thead><tbody>';
 
     foreach ($tableau as $pays => $capital) {
-        echo "<tr><td> $pays </td>";
-        echo "<td> $capital </td>";
-        echo "<td> <a href='https://fr.wikipedia.org/wiki/$capital' target='_blank'>Lien</a> </td></tr>";
+        $return .= "<tr><td> $pays </td>";
+        $return .= "<td> $capital </td>";
+        $return .= "<td> <a href='https://fr.wikipedia.org/wiki/$capital' target='_blank'>Lien</a> </td></tr>";
     }
-    echo "</tbody></table>";
-    return;
+    $return .= '</tbody></table>';
+
+    return $return;
 }
 
-
-
-afficherTableHTML($capitales);
+echo afficherTableHTML($capitales);
