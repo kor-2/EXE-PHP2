@@ -46,12 +46,11 @@ class Voiture {
 
         return $this;
     }
+    
     public function getInfos(){
         echo $this->get_marque()." ". $this->get_modele()."<br>";
         return ;
     }
-    
-    
 }
 
 class VoitureElec extends Voiture{
